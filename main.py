@@ -73,7 +73,12 @@ def transform(raw_data, date):
 
 
 def load(df):
+    """
+    Load the clean data to database previusly configurated
 
+    Args: 
+        - df (pd.Dataframe): A dataframe with clean data ready to be uploaded to some database
+    """
     print(f"Uploading {df.shape[0]} to Postgresql database")
     engine = create_engine(DB_CONNSTR)
     df.to_sql(TABLENAME, con=engine, index=False, if_exists='append')
